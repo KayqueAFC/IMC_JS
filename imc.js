@@ -1,15 +1,22 @@
 const calcular = document.getElementById("calcular");
 
 function imc () {
-    const nome = document.getElementById("nome").value;
-    const altura = document.getElementById("altura").value;
+    const nome = document.getElementById("nome").value; //Pegar os valores caso contrario sera a tudo
+    const altura = document.getElementById("altura").value; 
     const peso = document.getElementById("peso").value;
     const resultado = document.getElementById("resultado");
 
-    if (nome !== "" && altura !== "" && peso !== "") {       
-        const valorIMC = (peso / (altura * altura)).toFixed(1);
 
+    if (nome !== "" && altura !== "" && peso !== "") {  //Validacao se esta preenchido     
+
+        if (altura <= 0 || peso <=0) {
+            resultado.textContent = "Altura e peso devem ser maiores que zero!"; // Validacao se é maior que zero
+        return; //Interrupcao do codigo
+        }
+
+        const valorIMC = (peso / (altura * altura)).toFixed(1);
         let classificacao = "";
+
             if (valorIMC < 18.5){
                 classificacao = "abaixo do peso";
             }
@@ -35,4 +42,4 @@ function imc () {
         resultado.textContent = " Preencha todos os campos!"
     }  
 }
-calcular.addEventListener("click", imc);
+calcular.addEventListener("click", imc); //Adiciona um "ouvinte" do clic para fazer a função IMC
