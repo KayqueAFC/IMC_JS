@@ -7,7 +7,12 @@ function imc () {
     const resultado = document.getElementById("resultado");
 
 
-    if (nome !== "" && altura !== "" && peso !== "") {  //Validacao se esta preenchido     
+    if (nome !== "" && altura !== "" && peso !== "") {  //Validacao se esta preenchido       
+             
+        if(isNaN(nome) !== true) {
+            resultado.textContent = "Nome invalido" //Validacao nome correto
+        return;
+        }
 
         if (altura <= 0 || peso <=0) {
             resultado.textContent = "Altura e peso devem ser maiores que zero!"; // Validacao se é maior que zero
